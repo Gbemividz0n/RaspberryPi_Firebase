@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Packing Lot Dashboard</title>
+	<link rel="stylesheet" href="style.css">
+	<style>
+		select {
+			width: 100%;
+			padding: 12px 20px;
+			margin: 8px 0;
+			display: inline-block;
+			border: 1px solid #ccc;
+			box-sizing: border-box;
+		}
+
+		.imgcontainer {
+			margin: 0px 0 54px 0;
+		}
+
+		.avatar {
+			border: 2px solid black;
+			border-radius: 50%;
+			padding-bottom: 40px;
+			font-size: 150px;
+		}
+
+		.nav {
+			background-color: aquamarine;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="row">
+		<div class="col-12 nav">
+			<div class="col-8">
+				<div class="col-8">
+					<h1>Packing Lot Manager <span>(Reserve)</span></h1>
+				</div>
+				<div class="col-4">
+				</div>
+			</div>
+			<div class="col-4">
+				<div class="col-3">
+					<a href="register.html">Register</a>
+				</div>
+				<div class="col-3">
+					<a href="login.html">Login</a>
+				</div>
+				<div class="col-3">
+					<a href="dash.html">Dashboard</a>
+				</div>
+				<div class="col-3">
+					<a href="index.html">Reserve</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container pageSize">
+		<form action="dash.html">
+			<div class="container" style="background-color:#f1f1f1">
+				<h2 class="formH3">Reserve Packing Space</h2>
+			</div>
+			<div class="imgcontainer">
+				<span class="avatar">🚗</span>
+			</div>
+
+			<div class="container">
+				<label for="uname"><b>Pick An Available Space</b></label>
+				<select name="space" id="space" required>
+					<option disabled selected>No Space Selected</option>
+					<option value="A" onclick="optclick1">Parking Space A</option>
+					<option value="B" onclick="optclick2">Parking Space B</option>
+				</select>
+
+
+				<button id="Resbut" type="submit" onclick="Reservebut()">Reserve</button>
+			</div>
+
+			<div class="container" style="background-color:#f1f1f1">
+				<button type="button" class="cancelbtn">Cancel</button>
+			</div>
+		</form>
+	</div>
+  <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+  <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-app.js"></script>
+
+  <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+  <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-analytics.js"></script>
+
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-database.js"></script>
+<script>
+	var firebaseConfig = {
+  apiKey: "AIzaSyBK5aaxpg3qyEO4QNMVCHXpxwvqwGO5qMs",
+  authDomain: "parking-lot-d1968.firebaseapp.com",
+  databaseURL: "https://parking-lot-d1968.firebaseio.com",
+  projectId: "parking-lot-d1968",
+  storageBucket: "parking-lot-d1968.appspot.com",
+  messagingSenderId: "683598749141",
+  appId: "1:683598749141:web:d7676552c396ec45fb715c",
+  measurementId: "G-5BYZ3B55YT"
+};
+firebase.initializeApp(firebaseConfig);
+</script>
+<script src="index.js"></script>
+</body>
+
+</html>

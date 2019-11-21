@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Packing Lot Dashboard</title>
+	<link rel="stylesheet" href="style.css">
+	<style>
+		.pageSize {
+			width: 1000px;
+			max-width: 1000px !important;
+		}
+
+		.dashData {
+			text-align: center;
+		}
+
+		.dashData h3 {
+			font-size: 30px;
+			margin-bottom: 30px;
+		}
+
+		.dashData h4 {
+			font-size: 20px;
+			padding: 10px;
+		}
+
+		.dashCard {
+			background-color: whitesmoke;
+			box-shadow: 1px 1px 500px -31px teal;
+			border: 1px solid #80808047;
+			border-radius: 15px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="row">
+		<div class="col-12 nav">
+			<div class="col-8">
+				<div class="col-8">
+					<h1>Packing Lot Manager <span>(DashBoard)</span></h1>
+				</div>
+				<div class="col-4">
+				</div>
+			</div>
+			<div class="col-4">
+				<div class="col-3">
+					<a href="register.html">Register</a>
+				</div>
+				<div class="col-3">
+					<a href="login.html">Login</a>
+				</div>
+				<div class="col-3">
+					<a href="dash.html">Dashboard</a>
+				</div>
+				<div class="col-3">
+					<a href="index.html">Reserve</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container pageSize">
+		<div class="row">
+			<div class="col-12 dashData">
+				<div class="col-3 dashCard">
+					<div class="col-12">
+						<h3>Available Space</h3>
+					</div>
+					<div class="col-12">
+						<h4>3</h4>
+					</div>
+				</div>
+				<!-- <div class="col-3 dashCard">
+					<div class="col-12">
+						<h3>Total Packed Cars</h3>
+					</div>
+					<div class="col-12">
+						<h4>10</h4>
+					</div>
+				</div> -->
+				<div class="col-3 dashCard">
+					<div class="col-12">
+						<h3>Allotted Space Expires In</h3>
+					</div>
+					<div class="col-12">
+						<h4 id="timeCountDown">
+							<span id="minutesView"></span> : <span id="secondsView"></span>
+						</h4>
+					</div>
+				</div>
+				<div class="col-3 dashCard">
+					<div class="col-12">
+						<h3>Total Users</h3>
+					</div>
+					<div class="col-12">
+						<h4>33</h4>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<script>
+		var mins = 30;
+		var secs = 60;
+		let minutes = document.getElementById('minutesView');
+		let seconds = document.getElementById('secondsView');
+		minutes.innerHTML = `00 mins`;
+		seconds.innerHTML = `00 secs`;
+
+		function countdown() {
+			setInterval('DecrementSeconds()', 1000);
+		}
+
+		function DecrementMinute() {
+			mins = mins - 1;
+			console.log(mins);
+			minutes.innerHTML = `${mins} mins`;
+		}
+
+		function DecrementSeconds() {
+			console.log(mins);
+			if (mins <= 0) {
+				clearInterval();
+			} else {
+				minutes.innerHTML = `${mins} mins`;
+				secs = secs - 1;
+				if (secs <= 0) {
+					DecrementMinute();
+					secs = 60;
+				}
+				seconds.innerHTML = `${secs} secs`;
+			}
+		}
+
+		countdown();
+	</script>
+ <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+  <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-app.js"></script>
+
+  <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+  <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-analytics.js"></script>
+
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-database.js"></script>
+<script>
+	var firebaseConfig = {
+  apiKey: "AIzaSyBK5aaxpg3qyEO4QNMVCHXpxwvqwGO5qMs",
+  authDomain: "parking-lot-d1968.firebaseapp.com",
+  databaseURL: "https://parking-lot-d1968.firebaseio.com",
+  projectId: "parking-lot-d1968",
+  storageBucket: "parking-lot-d1968.appspot.com",
+  messagingSenderId: "683598749141",
+  appId: "1:683598749141:web:d7676552c396ec45fb715c",
+  measurementId: "G-5BYZ3B55YT"
+};
+firebase.initializeApp(firebaseConfig);
+</script>
+</body>
+
+</html>
